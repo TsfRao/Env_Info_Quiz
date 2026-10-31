@@ -3,40 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Environmental Informatics Quiz</title>
+    <title>Environmental Informatics Case Study Quiz</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
-        .quiz-container { max-width: 700px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: #1e3a8a; font-size: 24px; margin-bottom: 20px; text-align: center; }
-        .question-box { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
-        .question-title { font-weight: 600; font-size: 18px; margin-bottom: 15px; }
+        :root { --primary: #1e3a8a; --accent: #2563eb; --correct: #16a34a; --incorrect: #dc2626; --bg: #f8fafc; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h1 { color: var(--primary); margin-top: 0; font-size: 24px; text-align: center; }
+        .instructions { background: #eff6ff; border-left: 4px solid var(--accent); padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 14px; line-height: 1.5; }
+        .mode-toggle { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .mode-btn { padding: 8px 16px; border: 1px solid var(--accent); background: #fff; color: var(--accent); border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 13px; }
+        .mode-btn.active { background: var(--accent); color: #fff; }
+        .progress-bar-container { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
+        .progress-bar { background: var(--accent); height: 100%; width: 0%; transition: width 0.3s; }
+        .status-header { display: flex; justify-content: space-between; font-weight: 600; color: #64748b; font-size: 14px; margin-bottom: 15px; }
+        .question-text { font-size: 17px; font-weight: 600; margin-bottom: 20px; line-height: 1.4; }
         .options { display: flex; flex-direction: column; gap: 10px; }
-        .option-btn { padding: 12px 15px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; cursor: pointer; text-align: left; font-size: 15px; transition: all 0.2s; }
-        .option-btn:hover { background: #e2e8f0; }
-        .correct { background-color: #dcfce7 !important; border-color: #22c55e !important; font-weight: bold; }
-        .incorrect { background-color: #fee2e2 !important; border-color: #ef4444 !important; }
-        .explanation { margin-top: 12px; padding: 10px; background: #eff6ff; border-left: 4px solid #3b82f6; font-size: 14px; display: none; }
-        .nav-btn { display: block; margin: 20px auto 0; padding: 12px 24px; background: #1e3a8a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        .opt-btn { padding: 12px 16px; border: 1px solid #cbd5e1; background: #fff; text-align: left; border-radius: 8px; cursor: pointer; font-size: 15px; transition: all 0.2s; }
+        .opt-btn:hover:not(:disabled) { background: #f1f5f9; border-color: #94a3b8; }
+        .opt-btn.correct { background: #dcfce7 !important; border-color: var(--correct) !important; color: #14532d; font-weight: 600; }
+        .opt-btn.incorrect { background: #fee2e2 !important; border-color: var(--incorrect) !important; color: #7f1d1d; }
+        .explanation { margin-top: 15px; padding: 15px; background: #f1f5f9; border-radius: 8px; font-size: 14px; line-height: 1.5; display: none; }
+        .explanation-title { font-weight: 700; margin-bottom: 5px; }
+        .nav-btn { display: block; width: 100%; margin-top: 25px; padding: 12px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
         .nav-btn:hover { background: #1d4ed8; }
-        #score-container { text-align: center; display: none; }
+        .review-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; background: #fff; }
+        .review-card.correct-card { border-left: 6px solid var(--correct); }
+        .review-card.incorrect-card { border-left: 6px solid var(--incorrect); }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+        .badge-correct { background: #dcfce7; color: #14532d; }
+        .badge-incorrect { background: #fee2e2; color: #7f1d1d; }
     </style>
 </head>
 <body>
 
-<div class="quiz-container">
+<div class="container">
     <h1>Environmental Informatics Quiz</h1>
-    <div id="quiz-box">
-        <div class="question-box">
-            <div class="question-title" id="question-text">Loading question...</div>
-            <div class="options" id="options-container"></div>
-            <div class="explanation" id="explanation-box"></div>
-        </div>
-        <button class="nav-btn" id="next-btn" onclick="nextQuestion()" style="display:none;">Next Question</button>
+
+    <div class="instructions">
+        <strong>📌 How to Attempt:</strong>
+        <ul>
+            <li>Read each real-world case study scenario carefully.</li>
+            <li>Select one answer per question.</li>
+            <li><strong>Quiz Mode:</strong> Complete all questions to view a comprehensive breakdown explaining why incorrect choices were wrong and reinforcing correct methodology.</li>
+            <li><strong>Learning Mode:</strong> Toggle modes anytime to view detailed reasoning immediately after each selection.</li>
+        </ul>
     </div>
-    <div id="score-container">
-        <h2>Quiz Completed!</h2>
-        <p id="score-text" style="font-size: 20px;"></p>
-        <button class="nav-btn" onclick="restartQuiz()">Attempt Again</button>
+
+    <div class="mode-toggle">
+        <button class="mode-btn active" id="mode-quiz" onclick="setMode('quiz')">Standard Quiz Mode</button>
+        <button class="mode-btn" id="mode-learn" onclick="setMode('learn')">Step-by-Step Learning Mode</button>
+    </div>
+
+    <div id="quiz-view">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="status-header">
+            <span id="question-tracker">Question 1 of 10</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        <div class="question-text" id="question-text">Loading...</div>
+        <div class="options" id="options-container"></div>
+        <div class="explanation" id="explanation-box">
+            <div class="explanation-title" id="exp-title">Explanation</div>
+            <div id="exp-text"></div>
+        </div>
+        <button class="nav-btn" id="next-btn" style="display:none;" onclick="nextQuestion()">Next Question</button>
+    </div>
+
+    <div id="results-view" style="display:none;">
+        <h2 style="text-align:center; color: var(--primary);">Quiz Complete!</h2>
+        <p style="text-align:center; font-size: 20px; font-weight: 700;" id="final-score"></p>
+        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+        <h3 style="margin-bottom: 20px;">Detailed Performance Review & Explanations:</h3>
+        <div id="review-container"></div>
+        <button class="nav-btn" onclick="restartQuiz()">Attempt Quiz Again</button>
     </div>
 </div>
 
@@ -44,16 +85,32 @@
     let quizData = [];
     let currentIdx = 0;
     let score = 0;
+    let userAnswers = [];
+    let mode = 'quiz'; // 'quiz' or 'learn'
 
-    async function loadQuiz() {
-        const response = await fetch('quiz-data.json');
-        quizData = await response.json();
-        showQuestion();
+    async function init() {
+        const res = await fetch('quiz-data.json');
+        quizData = await res.json();
+        userAnswers = new Array(quizData.length).fill(null);
+        renderQuestion();
     }
 
-    function showQuestion() {
+    function setMode(newMode) {
+        mode = newMode;
+        document.getElementById('mode-quiz').classList.toggle('active', mode === 'quiz');
+        document.getElementById('mode-learn').classList.toggle('active', mode === 'learn');
+        renderQuestion();
+    }
+
+    function renderQuestion() {
         const q = quizData[currentIdx];
-        document.getElementById('question-text').innerText = `Q${currentIdx + 1}. ${q.question}`;
+        const total = quizData.length;
+
+        document.getElementById('question-tracker').innerText = `Question ${currentIdx + 1} of ${total}`;
+        document.getElementById('score-tracker').innerText = `Score: ${score}`;
+        document.getElementById('progress-bar').style.width = `${((currentIdx) / total) * 100}%`;
+        document.getElementById('question-text').innerText = `${q.id}. ${q.question}`;
+
         const optsContainer = document.getElementById('options-container');
         optsContainer.innerHTML = '';
         
@@ -61,59 +118,117 @@
         expBox.style.display = 'none';
         document.getElementById('next-btn').style.display = 'none';
 
+        const answered = userAnswers[currentIdx] !== null;
+
         q.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
-            btn.className = 'option-btn';
+            btn.className = 'opt-btn';
             btn.innerText = opt;
-            btn.onclick = () => selectOption(btn, idx, q.answer, q.explanation);
+
+            if (answered) {
+                btn.disabled = true;
+                if (idx === q.answer) btn.classList.add('correct');
+                if (userAnswers[currentIdx] === idx && idx !== q.answer) btn.classList.add('incorrect');
+            } else {
+                btn.onclick = () => handleSelection(idx);
+            }
             optsContainer.appendChild(btn);
         });
+
+        if (answered && (mode === 'learn' || currentIdx === quizData.length - 1)) {
+            showExplanation(q, userAnswers[currentIdx]);
+            document.getElementById('next-btn').style.display = 'block';
+            document.getElementById('next-btn').innerText = (currentIdx === total - 1) ? "View Final Review" : "Next Question";
+        }
     }
 
-    function selectOption(selectedBtn, selectedIdx, correctIdx, explanation) {
-        const buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach(btn => btn.disabled = true);
+    function handleSelection(selectedIdx) {
+        const q = quizData[currentIdx];
+        userAnswers[currentIdx] = selectedIdx;
 
-        if (selectedIdx === correctIdx) {
-            selectedBtn.classList.add('correct');
-            score++;
-        } else {
-            selectedBtn.classList.add('incorrect');
-            buttons[correctIdx].classList.add('correct');
+        if (selectedIdx === q.answer) score++;
+
+        const buttons = document.querySelectorAll('.opt-btn');
+        buttons.forEach((btn, idx) => {
+            btn.disabled = true;
+            if (idx === q.answer) btn.classList.add('correct');
+            if (idx === selectedIdx && selectedIdx !== q.answer) btn.classList.add('incorrect');
+        });
+
+        if (mode === 'learn') {
+            showExplanation(q, selectedIdx);
         }
 
-        const expBox = document.getElementById('explanation-box');
-        expBox.innerText = explanation;
-        expBox.style.display = 'block';
+        const nextBtn = document.getElementById('next-btn');
+        nextBtn.style.display = 'block';
+        nextBtn.innerText = (currentIdx === quizData.length - 1) ? "View Final Review" : "Next Question";
+    }
 
-        document.getElementById('next-btn').style.display = 'block';
+    function showExplanation(q, selectedIdx) {
+        const expBox = document.getElementById('explanation-box');
+        const expTitle = document.getElementById('exp-title');
+        const expText = document.getElementById('exp-text');
+
+        expBox.style.display = 'block';
+        if (selectedIdx === q.answer) {
+            expTitle.innerText = "✓ Correct Answer";
+            expTitle.style.color = "var(--correct)";
+        } else {
+            expTitle.innerText = `✗ Incorrect (Your answer: "${q.options[selectedIdx]}")`;
+            expTitle.style.color = "var(--incorrect)";
+        }
+        expText.innerText = `Correct Option: "${q.options[q.answer]}"\n\nReasoning: ${q.explanation}`;
     }
 
     function nextQuestion() {
         currentIdx++;
         if (currentIdx < quizData.length) {
-            showQuestion();
+            renderQuestion();
         } else {
-            showScore();
+            renderResults();
         }
     }
 
-    function showScore() {
-        document.getElementById('quiz-box').style.display = 'none';
-        const scoreContainer = document.getElementById('score-container');
-        scoreContainer.style.display = 'block';
-        document.getElementById('score-text').innerText = `You scored ${score} out of ${quizData.length}!`;
+    function renderResults() {
+        document.getElementById('quiz-view').style.display = 'none';
+        document.getElementById('results-view').style.display = 'block';
+        document.getElementById('final-score').innerText = `You Scored ${score} / ${quizData.length} (${(score / quizData.length * 100).toFixed(0)}%)`;
+
+        const reviewContainer = document.getElementById('review-container');
+        reviewContainer.innerHTML = '';
+
+        quizData.forEach((q, idx) => {
+            const userPick = userAnswers[idx];
+            const isCorrect = userPick === q.answer;
+
+            const card = document.createElement('div');
+            card.className = `review-card ${isCorrect ? 'correct-card' : 'incorrect-card'}`;
+            
+            card.innerHTML = `
+                <span class="badge ${isCorrect ? 'badge-correct' : 'badge-incorrect'}">
+                    ${isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}
+                </span>
+                <div style="font-weight:700; margin-bottom:10px;">Q${idx + 1}: ${q.question}</div>
+                <div style="font-size:14px; margin-bottom:6px;"><strong>Your Answer:</strong> ${userPick !== null ? q.options[userPick] : 'Not Attempted'}</div>
+                <div style="font-size:14px; margin-bottom:10px; color: var(--correct);"><strong>Correct Answer:</strong> ${q.options[q.answer]}</div>
+                <div style="background:#f8fafc; padding:12px; border-radius:6px; font-size:13px; color:#475569;">
+                    <strong>Reasoning:</strong> ${q.explanation}
+                </div>
+            `;
+            reviewContainer.appendChild(card);
+        });
     }
 
     function restartQuiz() {
         currentIdx = 0;
         score = 0;
-        document.getElementById('score-container').style.display = 'none';
-        document.getElementById('quiz-box').style.display = 'block';
-        showQuestion();
+        userAnswers = new Array(quizData.length).fill(null);
+        document.getElementById('results-view').style.display = 'none';
+        document.getElementById('quiz-view').style.display = 'block';
+        renderQuestion();
     }
 
-    loadQuiz();
+    init();
 </script>
 </body>
 </html>
