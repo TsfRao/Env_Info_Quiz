@@ -1,97 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Environmental Informatics Case Study Quiz</title>
-    <style>
-        :root { --primary: #1e3a8a; --accent: #2563eb; --correct: #16a34a; --incorrect: #dc2626; --bg: #f8fafc; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h1 { color: var(--primary); margin-top: 0; font-size: 24px; text-align: center; }
-        .instructions { background: #eff6ff; border-left: 4px solid var(--accent); padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 14px; line-height: 1.5; }
-        .mode-toggle { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-        .mode-btn { padding: 8px 16px; border: 1px solid var(--accent); background: #fff; color: var(--accent); border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 13px; }
-        .mode-btn.active { background: var(--accent); color: #fff; }
-        .progress-bar-container { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
-        .progress-bar { background: var(--accent); height: 100%; width: 0%; transition: width 0.3s; }
-        .status-header { display: flex; justify-content: space-between; font-weight: 600; color: #64748b; font-size: 14px; margin-bottom: 15px; }
-        .question-text { font-size: 17px; font-weight: 600; margin-bottom: 20px; line-height: 1.4; }
-        .options { display: flex; flex-direction: column; gap: 10px; }
-        .opt-btn { padding: 12px 16px; border: 1px solid #cbd5e1; background: #fff; text-align: left; border-radius: 8px; cursor: pointer; font-size: 15px; transition: all 0.2s; }
-        .opt-btn:hover:not(:disabled) { background: #f1f5f9; border-color: #94a3b8; }
-        .opt-btn.correct { background: #dcfce7 !important; border-color: var(--correct) !important; color: #14532d; font-weight: 600; }
-        .opt-btn.incorrect { background: #fee2e2 !important; border-color: var(--incorrect) !important; color: #7f1d1d; }
-        .explanation { margin-top: 15px; padding: 15px; background: #f1f5f9; border-radius: 8px; font-size: 14px; line-height: 1.5; display: none; }
-        .explanation-title { font-weight: 700; margin-bottom: 5px; }
-        .nav-btn { display: block; width: 100%; margin-top: 25px; padding: 12px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
-        .nav-btn:hover { background: #1d4ed8; }
-        .review-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; background: #fff; }
-        .review-card.correct-card { border-left: 6px solid var(--correct); }
-        .review-card.incorrect-card { border-left: 6px solid var(--incorrect); }
-        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
-        .badge-correct { background: #dcfce7; color: #14532d; }
-        .badge-incorrect { background: #fee2e2; color: #7f1d1d; }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>Environmental Informatics Quiz</h1>
-
-    <div class="instructions">
-        <strong>📌 How to Attempt:</strong>
-        <ul>
-            <li>Read each real-world case study scenario carefully.</li>
-            <li>Select one answer per question.</li>
-            <li><strong>Quiz Mode:</strong> Complete all questions to view a comprehensive breakdown explaining why incorrect choices were wrong and reinforcing correct methodology.</li>
-            <li><strong>Learning Mode:</strong> Toggle modes anytime to view detailed reasoning immediately after each selection.</li>
-        </ul>
-    </div>
-
-    <div class="mode-toggle">
-        <button class="mode-btn active" id="mode-quiz" onclick="setMode('quiz')">Standard Quiz Mode</button>
-        <button class="mode-btn" id="mode-learn" onclick="setMode('learn')">Step-by-Step Learning Mode</button>
-    </div>
-
-    <div id="quiz-view">
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <div class="status-header">
-            <span id="question-tracker">Question 1 of 10</span>
-            <span id="score-tracker">Score: 0</span>
-        </div>
-        <div class="question-text" id="question-text">Loading...</div>
-        <div class="options" id="options-container"></div>
-        <div class="explanation" id="explanation-box">
-            <div class="explanation-title" id="exp-title">Explanation</div>
-            <div id="exp-text"></div>
-        </div>
-        <button class="nav-btn" id="next-btn" style="display:none;" onclick="nextQuestion()">Next Question</button>
-    </div>
-
-    <div id="results-view" style="display:none;">
-        <h2 style="text-align:center; color: var(--primary);">Quiz Complete!</h2>
-        <p style="text-align:center; font-size: 20px; font-weight: 700;" id="final-score"></p>
-        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
-        <h3 style="margin-bottom: 20px;">Detailed Performance Review & Explanations:</h3>
-        <div id="review-container"></div>
-        <button class="nav-btn" onclick="restartQuiz()">Attempt Quiz Again</button>
-    </div>
-</div>
-
 <script>
-    let quizData = [];
+    let fullQuestionBank = [];
+    let activeQuiz = [];
     let currentIdx = 0;
     let score = 0;
     let userAnswers = [];
-    let mode = 'quiz'; // 'quiz' or 'learn'
+    let mode = 'quiz';
 
     async function init() {
-        const res = await fetch('quiz-data.json');
-        quizData = await res.json();
-        userAnswers = new Array(quizData.length).fill(null);
+        try {
+            const res = await fetch('quiz-data.json');
+            fullQuestionBank = await res.json();
+            startNewSession();
+        } catch (e) {
+            document.getElementById('question-text').innerText = "Error loading question bank. Please check your JSON file.";
+        }
+    }
+
+    function startNewSession() {
+        // Shuffle the full question bank randomly
+        let shuffled = [...fullQuestionBank].sort(() => 0.5 - Math.random());
+        
+        // Take a dynamic batch (e.g., 10 questions, or all if fewer)
+        activeQuiz = shuffled.slice(0, Math.min(10, shuffled.length));
+        
+        currentIdx = 0;
+        score = 0;
+        userAnswers = new Array(activeQuiz.length).fill(null);
+        
+        document.getElementById('results-view').style.display = 'none';
+        document.getElementById('quiz-view').style.display = 'block';
         renderQuestion();
     }
 
@@ -103,13 +40,13 @@
     }
 
     function renderQuestion() {
-        const q = quizData[currentIdx];
-        const total = quizData.length;
+        const q = activeQuiz[currentIdx];
+        const total = activeQuiz.length;
 
         document.getElementById('question-tracker').innerText = `Question ${currentIdx + 1} of ${total}`;
         document.getElementById('score-tracker').innerText = `Score: ${score}`;
         document.getElementById('progress-bar').style.width = `${((currentIdx) / total) * 100}%`;
-        document.getElementById('question-text').innerText = `${q.id}. ${q.question}`;
+        document.getElementById('question-text').innerText = `${currentIdx + 1}. ${q.question}`;
 
         const optsContainer = document.getElementById('options-container');
         optsContainer.innerHTML = '';
@@ -135,7 +72,7 @@
             optsContainer.appendChild(btn);
         });
 
-        if (answered && (mode === 'learn' || currentIdx === quizData.length - 1)) {
+        if (answered && (mode === 'learn' || currentIdx === activeQuiz.length - 1)) {
             showExplanation(q, userAnswers[currentIdx]);
             document.getElementById('next-btn').style.display = 'block';
             document.getElementById('next-btn').innerText = (currentIdx === total - 1) ? "View Final Review" : "Next Question";
@@ -143,7 +80,7 @@
     }
 
     function handleSelection(selectedIdx) {
-        const q = quizData[currentIdx];
+        const q = activeQuiz[currentIdx];
         userAnswers[currentIdx] = selectedIdx;
 
         if (selectedIdx === q.answer) score++;
@@ -161,7 +98,7 @@
 
         const nextBtn = document.getElementById('next-btn');
         nextBtn.style.display = 'block';
-        nextBtn.innerText = (currentIdx === quizData.length - 1) ? "View Final Review" : "Next Question";
+        nextBtn.innerText = (currentIdx === activeQuiz.length - 1) ? "View Final Review" : "Next Question";
     }
 
     function showExplanation(q, selectedIdx) {
@@ -182,7 +119,7 @@
 
     function nextQuestion() {
         currentIdx++;
-        if (currentIdx < quizData.length) {
+        if (currentIdx < activeQuiz.length) {
             renderQuestion();
         } else {
             renderResults();
@@ -192,12 +129,12 @@
     function renderResults() {
         document.getElementById('quiz-view').style.display = 'none';
         document.getElementById('results-view').style.display = 'block';
-        document.getElementById('final-score').innerText = `You Scored ${score} / ${quizData.length} (${(score / quizData.length * 100).toFixed(0)}%)`;
+        document.getElementById('final-score').innerText = `You Scored ${score} / ${activeQuiz.length} (${(score / activeQuiz.length * 100).toFixed(0)}%)`;
 
         const reviewContainer = document.getElementById('review-container');
         reviewContainer.innerHTML = '';
 
-        quizData.forEach((q, idx) => {
+        activeQuiz.forEach((q, idx) => {
             const userPick = userAnswers[idx];
             const isCorrect = userPick === q.answer;
 
@@ -219,16 +156,5 @@
         });
     }
 
-    function restartQuiz() {
-        currentIdx = 0;
-        score = 0;
-        userAnswers = new Array(quizData.length).fill(null);
-        document.getElementById('results-view').style.display = 'none';
-        document.getElementById('quiz-view').style.display = 'block';
-        renderQuestion();
-    }
-
     init();
 </script>
-</body>
-</html>
