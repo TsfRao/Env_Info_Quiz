@@ -1,3 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Informatics Interactive Quiz</title>
+    <style>
+        :root { --primary: #1e3a8a; --accent: #2563eb; --correct: #16a34a; --incorrect: #dc2626; --bg: #f8fafc; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: #1e293b; margin: 0; padding: 20px; }
+        .container { max-width: 850px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        /* Profile Header */
+        .instructor-card { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 25px; }
+        .instructor-title { font-size: 22px; font-weight: 700; margin: 0 0 5px 0; }
+        .instructor-sub { font-size: 14px; opacity: 0.9; margin-bottom: 15px; line-height: 1.4; }
+        .profile-links { display: flex; flex-wrap: wrap; gap: 10px; }
+        .profile-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(255,255,255,0.15); color: white; text-decoration: none; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s; }
+        .profile-badge:hover { background: rgba(255,255,255,0.3); transform: translateY(-1px); }
+
+        .instructions { background: #eff6ff; border-left: 4px solid var(--accent); padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 14px; line-height: 1.5; }
+        .mode-toggle { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .mode-btn { padding: 8px 16px; border: 1px solid var(--accent); background: #fff; color: var(--accent); border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 13px; }
+        .mode-btn.active { background: var(--accent); color: #fff; }
+        
+        .progress-bar-container { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
+        .progress-bar { background: var(--accent); height: 100%; width: 0%; transition: width 0.3s; }
+        .status-header { display: flex; justify-content: space-between; font-weight: 600; color: #64748b; font-size: 14px; margin-bottom: 15px; }
+        
+        .question-text { font-size: 17px; font-weight: 600; margin-bottom: 20px; line-height: 1.4; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .opt-btn { padding: 12px 16px; border: 1px solid #cbd5e1; background: #fff; text-align: left; border-radius: 8px; cursor: pointer; font-size: 15px; transition: all 0.2s; }
+        .opt-btn:hover:not(:disabled) { background: #f1f5f9; border-color: #94a3b8; }
+        .opt-btn.correct { background: #dcfce7 !important; border-color: var(--correct) !important; color: #14532d; font-weight: 600; }
+        .opt-btn.incorrect { background: #fee2e2 !important; border-color: var(--incorrect) !important; color: #7f1d1d; }
+        
+        .explanation { margin-top: 15px; padding: 15px; background: #f1f5f9; border-radius: 8px; font-size: 14px; line-height: 1.5; display: none; }
+        .explanation-title { font-weight: 700; margin-bottom: 5px; }
+        
+        .nav-btn { display: block; width: 100%; margin-top: 25px; padding: 12px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        .nav-btn:hover { background: #1d4ed8; }
+        .secondary-btn { background: #64748b; margin-top: 10px; }
+        .secondary-btn:hover { background: #475569; }
+        
+        .review-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; background: #fff; }
+        .review-card.correct-card { border-left: 6px solid var(--correct); }
+        .review-card.incorrect-card { border-left: 6px solid var(--incorrect); }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+        .badge-correct { background: #dcfce7; color: #14532d; }
+        .badge-incorrect { background: #fee2e2; color: #7f1d1d; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Instructor Profile Header -->
+    <div class="instructor-card">
+        <h2 class="instructor-title">Tauseef Ahmad Rao</h2>
+        <div class="instructor-sub">
+            Lecturer in Computer Science, Government Graduate College Satellite Town Rawalpindi<br>
+            MS Scholar in Climate Change & Environmental Informatics, NUTECH Islamabad
+        </div>
+        <div class="profile-links">
+            <a href="https://github.com/tauseefrao" target="_blank" class="profile-badge">💻 GitHub Profile</a>
+            <a href="https://gcsrawalpindi.edu.pk" target="_blank" class="profile-badge">🌐 College Portal</a>
+        </div>
+    </div>
+
+    <h1>Environmental Informatics Practical Quiz</h1>
+
+    <div class="instructions">
+        <strong>📌 Instructions:</strong>
+        <ul>
+            <li>Every quiz session dynamically samples <strong>10 questions randomly</strong> from a 50-question pool.</li>
+            <li>Click <strong>"Load 10 More Questions"</strong> anytime to attempt a fresh randomized set.</li>
+            <li><strong>Quiz Mode:</strong> Complete the 10 questions to view full scoring and detailed explanations for all choices.</li>
+            <li><strong>Learning Mode:</strong> View immediate step-by-step explanations and correct reasoning after every question.</li>
+        </ul>
+    </div>
+
+    <div class="mode-toggle">
+        <button class="mode-btn active" id="mode-quiz" onclick="setMode('quiz')">Standard Quiz Mode</button>
+        <button class="mode-btn" id="mode-learn" onclick="setMode('learn')">Step-by-Step Learning Mode</button>
+    </div>
+
+    <div id="quiz-view">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="status-header">
+            <span id="question-tracker">Question 1 of 10</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        <div class="question-text" id="question-text">Loading question bank...</div>
+        <div class="options" id="options-container"></div>
+        <div class="explanation" id="explanation-box">
+            <div class="explanation-title" id="exp-title">Explanation</div>
+            <div id="exp-text"></div>
+        </div>
+        <button class="nav-btn" id="next-btn" style="display:none;" onclick="nextQuestion()">Next Question</button>
+    </div>
+
+    <div id="results-view" style="display:none;">
+        <h2 style="text-align:center; color: var(--primary);">Quiz Completed!</h2>
+        <p style="text-align:center; font-size: 20px; font-weight: 700;" id="final-score"></p>
+        
+        <button class="nav-btn" onclick="startNewBatch()">🔄 Load 10 More Random Questions</button>
+        
+        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e2e8f0;">
+        <h3 style="margin-bottom: 20px;">Detailed Performance Review & Explanations:</h3>
+        <div id="review-container"></div>
+        <button class="nav-btn secondary-btn" onclick="startNewBatch()">🔄 Load 10 More Random Questions</button>
+    </div>
+</div>
+
 <script>
     let fullQuestionBank = [];
     let activeQuiz = [];
@@ -10,17 +124,15 @@
         try {
             const res = await fetch('quiz-data.json');
             fullQuestionBank = await res.json();
-            startNewSession();
+            startNewBatch();
         } catch (e) {
-            document.getElementById('question-text').innerText = "Error loading question bank. Please check your JSON file.";
+            document.getElementById('question-text').innerText = "Error loading question bank. Ensure quiz-data.json is present.";
         }
     }
 
-    function startNewSession() {
-        // Shuffle the full question bank randomly
+    function startNewBatch() {
+        // Randomly shuffle full pool and select 10 questions
         let shuffled = [...fullQuestionBank].sort(() => 0.5 - Math.random());
-        
-        // Take a dynamic batch (e.g., 10 questions, or all if fewer)
         activeQuiz = shuffled.slice(0, Math.min(10, shuffled.length));
         
         currentIdx = 0;
@@ -74,87 +186,4 @@
 
         if (answered && (mode === 'learn' || currentIdx === activeQuiz.length - 1)) {
             showExplanation(q, userAnswers[currentIdx]);
-            document.getElementById('next-btn').style.display = 'block';
-            document.getElementById('next-btn').innerText = (currentIdx === total - 1) ? "View Final Review" : "Next Question";
-        }
-    }
-
-    function handleSelection(selectedIdx) {
-        const q = activeQuiz[currentIdx];
-        userAnswers[currentIdx] = selectedIdx;
-
-        if (selectedIdx === q.answer) score++;
-
-        const buttons = document.querySelectorAll('.opt-btn');
-        buttons.forEach((btn, idx) => {
-            btn.disabled = true;
-            if (idx === q.answer) btn.classList.add('correct');
-            if (idx === selectedIdx && selectedIdx !== q.answer) btn.classList.add('incorrect');
-        });
-
-        if (mode === 'learn') {
-            showExplanation(q, selectedIdx);
-        }
-
-        const nextBtn = document.getElementById('next-btn');
-        nextBtn.style.display = 'block';
-        nextBtn.innerText = (currentIdx === activeQuiz.length - 1) ? "View Final Review" : "Next Question";
-    }
-
-    function showExplanation(q, selectedIdx) {
-        const expBox = document.getElementById('explanation-box');
-        const expTitle = document.getElementById('exp-title');
-        const expText = document.getElementById('exp-text');
-
-        expBox.style.display = 'block';
-        if (selectedIdx === q.answer) {
-            expTitle.innerText = "✓ Correct Answer";
-            expTitle.style.color = "var(--correct)";
-        } else {
-            expTitle.innerText = `✗ Incorrect (Your answer: "${q.options[selectedIdx]}")`;
-            expTitle.style.color = "var(--incorrect)";
-        }
-        expText.innerText = `Correct Option: "${q.options[q.answer]}"\n\nReasoning: ${q.explanation}`;
-    }
-
-    function nextQuestion() {
-        currentIdx++;
-        if (currentIdx < activeQuiz.length) {
-            renderQuestion();
-        } else {
-            renderResults();
-        }
-    }
-
-    function renderResults() {
-        document.getElementById('quiz-view').style.display = 'none';
-        document.getElementById('results-view').style.display = 'block';
-        document.getElementById('final-score').innerText = `You Scored ${score} / ${activeQuiz.length} (${(score / activeQuiz.length * 100).toFixed(0)}%)`;
-
-        const reviewContainer = document.getElementById('review-container');
-        reviewContainer.innerHTML = '';
-
-        activeQuiz.forEach((q, idx) => {
-            const userPick = userAnswers[idx];
-            const isCorrect = userPick === q.answer;
-
-            const card = document.createElement('div');
-            card.className = `review-card ${isCorrect ? 'correct-card' : 'incorrect-card'}`;
-            
-            card.innerHTML = `
-                <span class="badge ${isCorrect ? 'badge-correct' : 'badge-incorrect'}">
-                    ${isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}
-                </span>
-                <div style="font-weight:700; margin-bottom:10px;">Q${idx + 1}: ${q.question}</div>
-                <div style="font-size:14px; margin-bottom:6px;"><strong>Your Answer:</strong> ${userPick !== null ? q.options[userPick] : 'Not Attempted'}</div>
-                <div style="font-size:14px; margin-bottom:10px; color: var(--correct);"><strong>Correct Answer:</strong> ${q.options[q.answer]}</div>
-                <div style="background:#f8fafc; padding:12px; border-radius:6px; font-size:13px; color:#475569;">
-                    <strong>Reasoning:</strong> ${q.explanation}
-                </div>
-            `;
-            reviewContainer.appendChild(card);
-        });
-    }
-
-    init();
-</script>
+            document.getElementById('next-btn').style.display
