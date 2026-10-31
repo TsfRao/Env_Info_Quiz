@@ -9,19 +9,19 @@
       "GCM (Global Circulation Model)"
     ],
     "answer": 1,
-    "explanation": "HEC-HMS is designed for catchment-scale, short-term rainfall-runoff simulations and flood forecasting (hours to days)."
+    "explanation": "HEC-HMS is optimized for catchment-scale rainfall-runoff processes operating on short timescales (hours to days) for flood forecasting. SWAT is intended for long-term (years/decades) basin planning."
   },
   {
     "id": 2,
-    "question": "During the 2022 catastrophic floods in Pakistan, continuous cloud cover obscured optical satellite visibility. Which remote sensing tool successfully penetrated clouds and darkness to map the flood extent?",
+    "question": "During the 2022 catastrophic floods in Pakistan, continuous cloud cover obscured optical satellite visibility. Which remote sensing tool successfully penetrated clouds and darkness to map flood extents?",
     "options": [
-      "MODIS (Optical)",
-      "Landsat 8",
+      "MODIS Vegetation Index",
+      "Landsat 8 Thermal Infrared",
       "Synthetic Aperture Radar (SAR) aboard Sentinel-1",
-      "GPM (Global Precipitation Measurement)"
+      "GPM Satellite Radar"
     ],
     "answer": 2,
-    "explanation": "Synthetic Aperture Radar (SAR) aboard Sentinel-1 penetrates cloud cover and operates day/night to map inundation."
+    "explanation": "Synthetic Aperture Radar (SAR) operates in microwave frequencies, allowing it to penetrate cloud cover and record land cover day or night."
   },
   {
     "id": 3,
@@ -33,6 +33,90 @@
       "HEC-RAS"
     ],
     "answer": 0,
-    "explanation": "WRF-Chem couples weather forecasting with atmospheric chemistry to simulate short-term smog, aerosol interactions, and transport."
+    "explanation": "WRF-Chem couples atmospheric meteorology with chemical transport models to forecast short-term smog, aerosol interactions, and particulate dispersion."
+  },
+  {
+    "id": 4,
+    "question": "A national planning ministry is evaluating future mid-century climate extremes across South Asia requiring high-resolution regional climate projections (10–50 km grid spacing) capturing Himalayan mountain topography. Which model framework should they utilize?",
+    "options": [
+      "Global Circulation Models (GCMs)",
+      "Regional Climate Models (RCMs) like CORDEX-South Asia",
+      "HEC-HMS",
+      "SWAT Basin Models"
+    ],
+    "answer": 1,
+    "explanation": "Regional Climate Models (RCMs) dynamically downscale coarse Global Circulation Models (GCMs) to fine resolution (10–50 km), resolving complex terrain like the Himalayas."
+  },
+  {
+    "id": 5,
+    "question": "An environmental data scientist is designing a centralized data warehouse for multi-agency river basin management. What core data principles must the architecture satisfy for cross-agency discoverability and integration?",
+    "options": [
+      "COPO (Collect, Organize, Process, Output)",
+      "FAIR (Findable, Accessible, Interoperable, Reusable)",
+      "ACID (Atomicity, Consistency, Isolation, Durability)",
+      "CRUD (Create, Read, Update, Delete)"
+    ],
+    "answer": 1,
+    "explanation": "FAIR principles define international standards for open environmental data, ensuring data can be found, accessed, integrated across software platforms, and reused."
+  },
+  {
+    "id": 6,
+    "question": "A conservation team in northern Pakistan is mapping priority habitats for endangered snow leopards by integrating GPS telemetry, species occurrence data, and raster maps. Which tool performs this spatial analysis?",
+    "options": [
+      "CMAQ",
+      "WRF-Chem",
+      "Geographic Information Systems (GIS) like QGIS or ArcGIS",
+      "HEC-HMS"
+    ],
+    "answer": 2,
+    "explanation": "GIS tools store, manipulate, overlay, and analyze spatial vector and raster data layers for spatial suitability and habitat modeling."
+  },
+  {
+    "id": 7,
+    "question": "When assessing long-term water balance, soil erosion, and agricultural water allocations across the entire Indus River Basin over a 30-year span, which model is most appropriate?",
+    "options": [
+      "HEC-HMS",
+      "WRF-Chem",
+      "Soil and Water Assessment Tool (SWAT)",
+      "CMAQ"
+    ],
+    "answer": 2,
+    "explanation": "SWAT models large river basins over continuous multi-year periods to evaluate soil erosion, crop growth, continuous hydrology, and agricultural management."
+  },
+  {
+    "id": 8,
+    "question": "A city administration wants to build an operational system that combines real-time weather stations, hydrological models, and an alert interface for disaster managers. What platform architecture accomplishes this?",
+    "options": [
+      "A Decision-Support System (DSS)",
+      "A Relational Database Management System (RDBMS)",
+      "A Static GIS Map Server",
+      "A Climate Downscaling Pipeline"
+    ],
+    "answer": 0,
+    "explanation": "A Decision-Support System (DSS) integrates data collection, analytical modeling, and user visualization into actionable dashboards for policy and emergency decisions."
+  },
+  {
+    "id": 9,
+    "question": "Climate scientists notice systematic biases between raw GCM historical outputs and local meteorological station data. What processing step must be performed before running local impact assessments?",
+    "options": [
+      "Spatial Buffer Generation",
+      "Statistical Bias Correction",
+      "Image Classification",
+      "Hydrological Routing"
+    ],
+    "answer": 1,
+    "explanation": "Bias correction adjusts climate model projections against historical station observations to eliminate systematic over- or under-predictions of rainfall and temperature."
+  },
+  {
+    "id": 10,
+    "question": "An environmental researcher investigating global species conservation status and extinction risks requires a standardized, authoritative repository. Which database should they use?",
+    "options": [
+      "OpenAQ Data Portal",
+      "WHO Ambient Air Quality Database",
+      "IUCN Red List of Threatened Species",
+      "Copernicus Climate Data Store"
+    ],
+    "answer": 2,
+    "explanation": "The IUCN Red List is the world's standard global repository for evaluating and categorizing species extinction risk."
   }
 ]
