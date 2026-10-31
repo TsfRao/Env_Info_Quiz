@@ -60,7 +60,7 @@
             MS Scholar in Climate Change & Environmental Informatics, NUTECH Islamabad
         </div>
         <div class="profile-links">
-            <a href="https://github.com/tauseefrao" target="_blank" class="profile-badge">💻 GitHub Profile</a>
+            <a href="https://github.com/TsfRao" target="_blank" class="profile-badge">💻 GitHub Profile</a>
             <a href="https://gcsrawalpindi.edu.pk" target="_blank" class="profile-badge">🌐 College Portal</a>
         </div>
     </div>
@@ -71,7 +71,7 @@
         <strong>📌 Instructions:</strong>
         <ul>
             <li>Every quiz session dynamically samples <strong>10 questions randomly</strong> from a 50-question pool.</li>
-            <li>Click <strong>"Load 10 More Questions"</strong> anytime to attempt a fresh randomized set.</li>
+            <li>Click <strong>"Load 10 More Random Questions"</strong> anytime to attempt a fresh randomized set.</li>
             <li><strong>Quiz Mode:</strong> Complete the 10 questions to view full scoring and detailed explanations for all choices.</li>
             <li><strong>Learning Mode:</strong> View immediate step-by-step explanations and correct reasoning after every question.</li>
         </ul>
@@ -131,7 +131,6 @@
     }
 
     function startNewBatch() {
-        // Randomly shuffle full pool and select 10 questions
         let shuffled = [...fullQuestionBank].sort(() => 0.5 - Math.random());
         activeQuiz = shuffled.slice(0, Math.min(10, shuffled.length));
         
@@ -186,4 +185,89 @@
 
         if (answered && (mode === 'learn' || currentIdx === activeQuiz.length - 1)) {
             showExplanation(q, userAnswers[currentIdx]);
-            document.getElementById('next-btn').style.display
+            document.getElementById('next-btn').style.display = 'block';
+            document.getElementById('next-btn').innerText = (currentIdx === total - 1) ? "View Final Review" : "Next Question";
+        }
+    }
+
+    function handleSelection(selectedIdx) {
+        const q = activeQuiz[currentIdx];
+        userAnswers[currentIdx] = selectedIdx;
+
+        if (selectedIdx === q.answer) score++;
+
+        const buttons = document.querySelectorAll('.opt-btn');
+        buttons.forEach((btn, idx) => {
+            btn.disabled = true;
+            if (idx === q.answer) btn.classList.add('correct');
+            if (idx === selectedIdx && selectedIdx !== q.answer) btn.classList.add('incorrect');
+        });
+
+        if (mode === 'learn') {
+            showExplanation(q, selectedIdx);
+        }
+
+        const nextBtn = document.getElementById('next-btn');
+        nextBtn.style.display = 'block';
+        nextBtn.innerText = (currentIdx === activeQuiz.length - 1) ? "View Final Review" : "Next Question";
+    }
+
+    function showExplanation(q, selectedIdx) {
+        const expBox = document.getElementById('explanation-box');
+        const expTitle = document.getElementById('exp-title');
+        const expText = document.getElementById('exp-text');
+
+        expBox.style.display = 'block';
+        if (selectedIdx === q.answer) {
+            expTitle.innerText = "✓ Correct Answer";
+            expTitle.style.color = "var(--correct)";
+        } else {
+            expTitle.innerText = `✗ Incorrect (Your answer: "${q.options[selectedIdx]}")`;
+            expTitle.style.color = "var(--incorrect)";
+        }
+        expText.innerText = `Correct Option: "${q.options[q.answer]}"\n\nReasoning: ${q.explanation}`;
+    }
+
+    function nextQuestion() {
+        currentIdx++;
+        if (currentIdx < activeQuiz.length) {
+            renderQuestion();
+        } else {
+            renderResults();
+        }
+    }
+
+    function renderResults() {
+        document.getElementById('quiz-view').style.display = 'none';
+        document.getElementById('results-view').style.display = 'block';
+        document.getElementById('final-score').innerText = `You Scored ${score} / ${activeQuiz.length} (${(score / activeQuiz.length * 100).toFixed(0)}%)`;
+
+        const reviewContainer = document.getElementById('review-container');
+        reviewContainer.innerHTML = '';
+
+        activeQuiz.forEach((q, idx) => {
+            const userPick = userAnswers[idx];
+            const isCorrect = userPick === q.answer;
+
+            const card = document.createElement('div');
+            card.className = `review-card ${isCorrect ? 'correct-card' : 'incorrect-card'}`;
+            
+            card.innerHTML = `
+                <span class="badge ${isCorrect ? 'badge-correct' : 'badge-incorrect'}">
+                    ${isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}
+                </span>
+                <div style="font-weight:700; margin-bottom:10px;">Q${idx + 1}: ${q.question}</div>
+                <div style="font-size:14px; margin-bottom:6px;"><strong>Your Answer:</strong> ${userPick !== null ? q.options[userPick] : 'Not Attempted'}</div>
+                <div style="font-size:14px; margin-bottom:10px; color: var(--correct);"><strong>Correct Answer:</strong> ${q.options[q.answer]}</div>
+                <div style="background:#f8fafc; padding:12px; border-radius:6px; font-size:13px; color:#475569;">
+                    <strong>Reasoning:</strong> ${q.explanation}
+                </div>
+            `;
+            reviewContainer.appendChild(card);
+        });
+    }
+
+    init();
+</script>
+</body>
+</html>
