@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "question": "A regional environmental agency in South Asia wants to model short-term river flows and forecast flash floods hours after heavy monsoonal rain events in an ungauged mountain catchment. Which specific hydrological model should they deploy?",
+    "options": [
+      "SWAT (Soil and Water Assessment Tool)",
+      "HEC-HMS (Hydrologic Engineering Center - Hydrologic Modeling System)",
+      "CMAQ (Community Multiscale Air Quality Model)",
+      "GCM (Global Circulation Model)"
+    ],
+    "answer": 1,
+    "explanation": "HEC-HMS is designed for catchment-scale, short-term rainfall-runoff simulations and flood forecasting (hours to days)."
+  },
+  {
+    "id": 2,
+    "question": "During the 2022 catastrophic floods in Pakistan, continuous cloud cover obscured optical satellite visibility. Which remote sensing tool successfully penetrated clouds and darkness to map the flood extent?",
+    "options": [
+      "MODIS (Optical)",
+      "Landsat 8",
+      "Synthetic Aperture Radar (SAR) aboard Sentinel-1",
+      "GPM (Global Precipitation Measurement)"
+    ],
+    "answer": 2,
+    "explanation": "Synthetic Aperture Radar (SAR) aboard Sentinel-1 penetrates cloud cover and operates day/night to map inundation."
+  },
+  {
+    "id": 3,
+    "question": "An urban environmental task force in Lahore needs to simulate winter smog accumulation and pollutant transport under stagnant winter conditions. Which informatics tool provides this physical-chemical simulation?",
+    "options": [
+      "WRF-Chem",
+      "QGIS",
+      "GBIF Data Portal",
+      "HEC-RAS"
+    ],
+    "answer": 0,
+    "explanation": "WRF-Chem couples weather forecasting with atmospheric chemistry to simulate short-term smog, aerosol interactions, and transport."
+  }
+]
