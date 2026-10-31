@@ -1,122 +1,352 @@
 [
   {
     "id": 1,
-    "question": "A regional environmental agency in South Asia wants to model short-term river flows and forecast flash floods hours after heavy monsoonal rain events in an ungauged mountain catchment. Which specific hydrological model should they deploy?",
-    "options": [
-      "SWAT (Soil and Water Assessment Tool)",
-      "HEC-HMS (Hydrologic Engineering Center - Hydrologic Modeling System)",
-      "CMAQ (Community Multiscale Air Quality Model)",
-      "GCM (Global Circulation Model)"
-    ],
+    "question": "An international climate assessment requires global tracking of greenhouse gases like carbon dioxide and methane. Which satellite missions are explicitly utilized for greenhouse gas monitoring?",
+    "options": ["Landsat 1 and 2", "Orbiting Carbon Observatory and Sentinel satellites of the European Copernicus program", "HEC-HMS radar networks", "OpenAQ low-cost sensors"],
     "answer": 1,
-    "explanation": "HEC-HMS is optimized for catchment-scale rainfall-runoff processes operating on short timescales (hours to days) for flood forecasting. SWAT is intended for long-term (years/decades) basin planning."
+    "explanation": "Greenhouse gases are measured globally using satellite missions such as the Orbiting Carbon Observatory and the Sentinel satellites of the European Copernicus program."
   },
   {
     "id": 2,
-    "question": "During the 2022 catastrophic floods in Pakistan, continuous cloud cover obscured optical satellite visibility. Which remote sensing tool successfully penetrated clouds and darkness to map flood extents?",
-    "options": [
-      "MODIS Vegetation Index",
-      "Landsat 8 Thermal Infrared",
-      "Synthetic Aperture Radar (SAR) aboard Sentinel-1",
-      "GPM Satellite Radar"
-    ],
-    "answer": 2,
-    "explanation": "Synthetic Aperture Radar (SAR) operates in microwave frequencies, allowing it to penetrate cloud cover and record land cover day or night."
+    "question": "When mapping regional aquifers and tracking groundwater depletion over large agricultural plains, what primary combination of technologies is used in environmental informatics?",
+    "options": ["Remote sensing and geographic information systems (GIS)", "CMAQ air quality modeling", "Ground-based sound sensors only", "IUCN Red List databases"],
+    "answer": 0,
+    "explanation": "Remote sensing and geographic information systems (GIS) are combined to map aquifers and track groundwater depletion."
   },
   {
     "id": 3,
-    "question": "An urban environmental task force in Lahore needs to simulate winter smog accumulation and pollutant transport under stagnant winter conditions. Which informatics tool provides this physical-chemical simulation?",
-    "options": [
-      "WRF-Chem",
-      "QGIS",
-      "GBIF Data Portal",
-      "HEC-RAS"
-    ],
-    "answer": 0,
-    "explanation": "WRF-Chem couples atmospheric meteorology with chemical transport models to forecast short-term smog, aerosol interactions, and particulate dispersion."
+    "question": "A conservation team wants to record wildlife presence, animal movements, and automatic species identification in a dense forest. Which combination of tools is deployed?",
+    "options": ["GCM climate models", "Drones, camera traps, sound sensors, and artificial intelligence tools", "SoilGrids machine learning profiles", "UNEP policy briefs"],
+    "answer": 1,
+    "explanation": "Species monitoring utilizes drones, camera traps, sound sensors, and AI automated identification tools."
   },
   {
     "id": 4,
-    "question": "A national planning ministry is evaluating future mid-century climate extremes across South Asia requiring high-resolution regional climate projections (10–50 km grid spacing) capturing Himalayan mountain topography. Which model framework should they utilize?",
-    "options": [
-      "Global Circulation Models (GCMs)",
-      "Regional Climate Models (RCMs) like CORDEX-South Asia",
-      "HEC-HMS",
-      "SWAT Basin Models"
-    ],
-    "answer": 1,
-    "explanation": "Regional Climate Models (RCMs) dynamically downscale coarse Global Circulation Models (GCMs) to fine resolution (10–50 km), resolving complex terrain like the Himalayas."
+    "question": "City environmental protection agencies need to map particulate matter (PM2.5, PM10), ozone, and nitrogen oxides to guide public health studies. What data sources feed these city-level dashboards?",
+    "options": ["Ground sensors and satellites", "SWAT river basin models", "Global Biodiversity Information Facility (GBIF)", "HEC-HMS rainfall-runoff logs"],
+    "answer": 0,
+    "explanation": "Air pollution sensors on the ground and satellite platforms measure fine particulate matter, ozone, and oxides to populate city dashboards."
   },
   {
     "id": 5,
-    "question": "An environmental data scientist is designing a centralized data warehouse for multi-agency river basin management. What core data principles must the architecture satisfy for cross-agency discoverability and integration?",
-    "options": [
-      "COPO (Collect, Organize, Process, Output)",
-      "FAIR (Findable, Accessible, Interoperable, Reusable)",
-      "ACID (Atomicity, Consistency, Isolation, Durability)",
-      "CRUD (Create, Read, Update, Delete)"
-    ],
+    "question": "In disaster risk reduction strategies for flash floods, how do informatics systems predict riverine and flash flooding?",
+    "options": ["By tracking seismic tectonic plates", "Using satellite-based rainfall data and hydrological models", "Through IUCN species categorization", "Via static paper maps"],
     "answer": 1,
-    "explanation": "FAIR principles define international standards for open environmental data, ensuring data can be found, accessed, integrated across software platforms, and reused."
+    "explanation": "Satellite-based rainfall data combined with hydrological models enable flash flood and riverine prediction."
   },
   {
     "id": 6,
-    "question": "A conservation team in northern Pakistan is mapping priority habitats for endangered snow leopards by integrating GPS telemetry, species occurrence data, and raster maps. Which tool performs this spatial analysis?",
-    "options": [
-      "CMAQ",
-      "WRF-Chem",
-      "Geographic Information Systems (GIS) like QGIS or ArcGIS",
-      "HEC-HMS"
-    ],
-    "answer": 2,
-    "explanation": "GIS tools store, manipulate, overlay, and analyze spatial vector and raster data layers for spatial suitability and habitat modeling."
+    "question": "An urban planning agency is designing energy-efficient buildings, green roofs, and urban heat island mitigation strategies. What environmental informatics components support this?",
+    "options": ["Land-use models and digital maps", "WRF-Chem volcanic ash trackers", "Deep-sea bathymetry sonar", "Historical Landsat 1 images from 1972"],
+    "answer": 0,
+    "explanation": "Environmental informatics supports sustainable green city design through land-use models and spatial digital maps."
   },
   {
     "id": 7,
-    "question": "When assessing long-term water balance, soil erosion, and agricultural water allocations across the entire Indus River Basin over a 30-year span, which model is most appropriate?",
-    "options": [
-      "HEC-HMS",
-      "WRF-Chem",
-      "Soil and Water Assessment Tool (SWAT)",
-      "CMAQ"
-    ],
-    "answer": 2,
-    "explanation": "SWAT models large river basins over continuous multi-year periods to evaluate soil erosion, crop growth, continuous hydrology, and agricultural management."
+    "question": "What is the core function of environmental informatics regarding raw environmental observations?",
+    "options": ["To store raw data indefinitely without processing", "To transform observations into actionable information and decisions", "To replace field ecologists completely with automated drones", "To maintain classified government silos"],
+    "answer": 1,
+    "explanation": "Environmental informatics transforms raw environmental observations into actionable information and decision-support systems."
   },
   {
     "id": 8,
-    "question": "A city administration wants to build an operational system that combines real-time weather stations, hydrological models, and an alert interface for disaster managers. What platform architecture accomplishes this?",
-    "options": [
-      "A Decision-Support System (DSS)",
-      "A Relational Database Management System (RDBMS)",
-      "A Static GIS Map Server",
-      "A Climate Downscaling Pipeline"
-    ],
+    "question": "A water authority needs to track dangerous pollutants such as arsenic, nitrates, and microplastics in municipal drinking sources. How are these tracked?",
+    "options": ["Using dedicated water quality data monitoring systems", "Through GCM global circulation grids (50–300 km)", "Via citizen-driven photo uploads on iNaturalist", "By analyzing global stock market trends"],
     "answer": 0,
-    "explanation": "A Decision-Support System (DSS) integrates data collection, analytical modeling, and user visualization into actionable dashboards for policy and emergency decisions."
+    "explanation": "Water quality monitoring data systems explicitly track pollutants like arsenic, nitrates, and microplastics."
   },
   {
     "id": 9,
-    "question": "Climate scientists notice systematic biases between raw GCM historical outputs and local meteorological station data. What processing step must be performed before running local impact assessments?",
-    "options": [
-      "Spatial Buffer Generation",
-      "Statistical Bias Correction",
-      "Image Classification",
-      "Hydrological Routing"
-    ],
-    "answer": 1,
-    "explanation": "Bias correction adjusts climate model projections against historical station observations to eliminate systematic over- or under-predictions of rainfall and temperature."
+    "question": "When assessing ecosystem services such as carbon storage and natural pollination across landscapes, what global platform records are consulted?",
+    "options": ["Global Biodiversity Information Facility (GBIF) and IUCN Red List", "OpenAQ real-time sensor streams", "ECMWF ERA5 reanalysis grids", "U.S. EPA CMAQ emission inventories"],
+    "answer": 0,
+    "explanation": "Biodiversity databases like GBIF and the IUCN Red List evaluate species occurrence records and ecosystem services."
   },
   {
     "id": 10,
-    "question": "An environmental researcher investigating global species conservation status and extinction risks requires a standardized, authoritative repository. Which database should they use?",
-    "options": [
-      "OpenAQ Data Portal",
-      "WHO Ambient Air Quality Database",
-      "IUCN Red List of Threatened Species",
-      "Copernicus Climate Data Store"
-    ],
+    "question": "In smart urban systems, what do integrated sensor networks monitor in real time to support municipal sustainability?",
+    "options": ["Traffic, energy use, and waste management", "Deep mantle seismic tremors", "Oceanic tectonic subduction zones", "Stratospheric ozone depletion rates"],
+    "answer": 0,
+    "explanation": "Smart urban infrastructure uses integrated networks to monitor traffic, energy consumption, and waste management."
+  },
+  {
+    "id": 11,
+    "question": "What early scientific modeling approach in the 1960s pioneered quantitative ecology and energy/nutrient flow simulation in ecosystems?",
+    "options": ["Systems ecology models (e.g., Odum’s ecosystem modeling)", "Cloud-native Google Earth Engine apps", "Modern FAIR data warehousing", "IoT low-cost particulate sensors"],
+    "answer": 0,
+    "explanation": "Systems ecology models like Odum's work in the 1960s pioneered quantitative ecology using early computers."
+  },
+  {
+    "id": 12,
+    "question": "The launch of which satellite in 1972 marked the beginning of consistent, global-scale Earth imagery used for land use and forest cover?",
+    "options": ["Sentinel-1 SAR", "Landsat 1", "MODIS Aqua", "TRMM rainfall satellite"],
+    "answer": 1,
+    "explanation": "Landsat 1 launched in 1972, establishing continuous global Earth observation."
+  },
+  {
+    "id": 13,
+    "question": "In the 1980s, digital cartography replaced traditional paper-based maps in environmental planning. Which early commercial GIS software was widely adopted?",
+    "options": ["QGIS", "ArcInfo by ESRI (1982)", "Google Earth Engine", "HEC-HMS v4.0"],
+    "answer": 1,
+    "explanation": "ArcInfo, developed by ESRI in 1982, was the early benchmark software for spatial analysis."
+  },
+  {
+    "id": 14,
+    "question": "During the 1990s, the term 'Environmental Informatics' was formally recognized in Europe, marked by the establishment of which IFIP Working Group in 1992?",
+    "options": ["Working Group 5.11: 'Computers and Environment'", "Working Group 1.2: 'Artificial Intelligence'", "Working Group 8.4: 'E-Commerce'", "Working Group 3.2: 'Informatics Education'"],
+    "answer": 0,
+    "explanation": "IFIP Working Group 5.11 was created in 1992 specifically focusing on Computers and Environment."
+  },
+  {
+    "id": 15,
+    "question": "Which modern technological paradigm allows scientists to simulate urban air pollution, water cycles, and biodiversity scenarios using virtual replicas?",
+    "options": ["Digital twins of ecosystems and cities", "1980s punch-card data processing", "Static GIS shapefiles", "Analog paper cartography"],
+    "answer": 0,
+    "explanation": "Digital twins serve as dynamic virtual replicas simulating environmental scenarios in real time."
+  },
+  {
+    "id": 16,
+    "question": "A researcher using NASA's MODIS sensor needs to analyze global environmental indicators. What specific parameters does MODIS monitor?",
+    "options": ["Global vegetation, forest fires, and air pollution (aerosols)", "Deep ocean tectonic plate displacement", "Real-time local traffic congestion in Lahore", "Sub-surface groundwater mineral deposits"],
+    "answer": 0,
+    "explanation": "MODIS tracks global vegetation, forest fires, and atmospheric aerosols."
+  },
+  {
+    "id": 17,
+    "question": "The European Space Agency (ESA) Copernicus Sentinel satellites provide high-resolution data covering which domains?",
+    "options": ["Land, water, and atmosphere", "Financial markets and urban housing prices", "Seismic fault lines exclusively", "Commercial airline flight paths"],
+    "answer": 0,
+    "explanation": "Sentinel satellites provide high-resolution observations across land, water, and atmospheric parameters."
+  },
+  {
+    "id": 18,
+    "question": "During heavy monsoon floods where thick clouds obscure optical views, how does Synthetic Aperture Radar (SAR) on Sentinel-1 map water inundation?",
+    "options": ["It relies entirely on sunlight reflection.", "It uses special radar that can 'see' floods through clouds and at night.", "It measures subsurface soil temperature directly.", "It tracks sound waves underwater."],
+    "answer": 1,
+    "explanation": "SAR microwave radar penetrates clouds and operates in day or night conditions to map surface water."
+  },
+  {
+    "id": 19,
+    "question": "What is the primary operational definition and core function of Geographic Information Systems (GIS) in environmental informatics?",
+    "options": ["Capturing, storing, analyzing, and visualizing spatial (location-based) data", "Simulating global atmospheric chemistry equations", "Compiling national economic censuses", "Generating automated weather forecasts without location tags"],
+    "answer": 0,
+    "explanation": "GIS tools capture, store, analyze, and visualize spatial (location-based) data layers."
+  },
+  {
+    "id": 20,
+    "question": "An underfunded university research lab in a developing country needs a free and open-source GIS software that integrates well with Python, R, and Google Earth Engine. Which tool should they choose?",
+    "options": ["ArcGIS (by Esri)", "QGIS (Quantum GIS)", "MATLAB Enterprise Edition", "ArcInfo 1982 workstation"],
+    "answer": 1,
+    "explanation": "QGIS is free, open-source, and widely adopted in academic research due to rich plugin and script integration."
+  },
+  {
+    "id": 21,
+    "question": "Researchers studying urban heat islands in Karachi rely on which GIS-based mapping technique?",
+    "options": ["Land surface temperature maps derived via GIS", "Global Circulation Model coarse grids (300 km)", "IUCN Red List species counts", "WHO air quality policy briefs"],
+    "answer": 0,
+    "explanation": "GIS land surface temperature maps derived from satellite thermal channels identify urban heat islands."
+  },
+  {
+    "id": 22,
+    "question": "When mapping flood risk along the Indus River, QGIS is combined with digital elevation models (DEMs), river flow records, and which satellite imagery?",
+    "options": ["Sentinel-1 SAR imagery", "GBIF species occurrence logs", "SoilGrids pH datasets", "OpenAQ hourly station logs"],
+    "answer": 0,
+    "explanation": "Sentinel-1 SAR images provide the flooded extent overlay for GIS risk zoning."
+  },
+  {
+    "id": 23,
+    "question": "In northern Pakistan (e.g., Deosai National Park or Hindu Kush ranges), how does GIS assist wildlife habitat-suitability analysis?",
+    "options": ["By integrating species observations with environmental layers (climate, land cover)", "By tracking industrial carbon tax credits", "By running CMAQ chemical transport simulations", "By calculating municipal water tariffs"],
+    "answer": 0,
+    "explanation": "GIS links field species observations with elevation, land cover, and climate layers to map suitable habitats."
+  },
+  {
+    "id": 24,
+    "question": "Which satellite program has provided continuous multi-decade Earth observation imagery since 1972, enabling the study of long-term deforestation and agricultural changes?",
+    "options": ["Landsat", "Sentinel-2", "MODIS Terra", "TRMM"],
+    "answer": 0,
+    "explanation": "Landsat has maintained long-term Earth observation since 1972."
+  },
+  {
+    "id": 25,
+    "question": "Beyond data integration and spatial analysis, what is the third core function of GIS that helps decision-makers interpret results?",
+    "options": ["Producing maps, 3D models, and dashboards", "Issuing paper currency", "Regulating industrial factory smokestacks", "Auditing national greenhouse inventories"],
+    "answer": 0,
+    "explanation": "GIS core functions are data integration, spatial analysis, and visualization (maps, 3D models, dashboards)."
+  },
+  {
+    "id": 26,
+    "question": "What fundamentally defines a climate model in environmental informatics?",
+    "options": ["A computer program that simulates Earth's climate using physics across grid boxes", "A simple spreadsheet calculating monthly utility bills", "A live radar gun measuring highway vehicle speeds", "A manual water sampling bucket used in rivers"],
+    "answer": 0,
+    "explanation": "Climate models use mathematical physics equations to simulate atmosphere, oceans, and land across grid cells."
+  },
+  {
+    "id": 27,
+    "question": "Global Circulation Models (GCMs) provide big-picture, long-term climate projections. What is their typical grid resolution?",
+    "options": ["1–5 meters", "10–50 km", "50–300 km per grid cell", "Global single point"],
     "answer": 2,
-    "explanation": "The IUCN Red List is the world's standard global repository for evaluating and categorizing species extinction risk."
+    "explanation": "GCMs operate at coarse spatial resolutions ranging from 50 to 300 km per grid cell."
+  },
+  {
+    "id": 28,
+    "question": "Why do regional planners in South Asia prefer Regional Climate Models (RCMs) like CORDEX over GCMs?",
+    "options": ["RCMs provide finer regional detail (10–50 km resolution) for mountains, coasts, and local extremes.", "RCMs require zero computing power.", "RCMs predict exact daily street weather for the next year.", "RCMs do not depend on GCM boundary conditions."],
+    "answer": 0,
+    "explanation": "RCMs downscale coarse GCM data to 10–50 km, resolving local terrain like the Himalayas."
+  },
+  {
+    "id": 29,
+    "question": "What terminology describes future greenhouse gas trajectory pathways used in climate modeling?",
+    "options": ["Shared Socioeconomic Pathways (SSPs) and Representative Concentration Pathways (RCPs)", "SQL database normalization rules", "FAIR data principles", "ISO metadata protocols"],
+    "answer": 0,
+    "explanation": "Climate projections use SSPs and RCPs to represent distinct future socioeconomic and emission scenarios."
+  },
+  {
+    "id": 30,
+    "question": "When converting coarse global model outputs to local scales, what are the two main downscaling categories mentioned in the lectures?",
+    "options": ["Dynamical (RCMs) and Statistical (math-based)", "Manual and Automated", "SQL and NoSQL", "Raster and Vector"],
+    "answer": 0,
+    "explanation": "Downscaling methods are categorized into physics-based Dynamical (RCMs) and mathematical Statistical downscaling."
+  },
+  {
+    "id": 31,
+    "question": "Why do climate scientists recommend using an 'ensemble' of multiple models rather than relying on a single climate simulation?",
+    "options": ["It yields more reliable projections and accounts for range uncertainty.", "It guarantees exact 100% precision on daily rainfall amounts.", "It eliminates the need for local station data validation.", "It reduces computing time to zero."],
+    "answer": 0,
+    "explanation": "Ensembles combine predictions from multiple models to provide higher reliability and quantify uncertainty."
+  },
+  {
+    "id": 32,
+    "question": "When structuring a climate change impact workflow (e.g., assessing mid-century changes in Pakistan), what standard baseline reference period is typically compared against future slices like 2041–2060?",
+    "options": ["1995–2014", "1800–1850", "2025–2026", "1950–1960"],
+    "answer": 0,
+    "explanation": "Standard CMIP6 baseline reference periods use 1995–2014 for comparative future evaluation."
+  },
+  {
+    "id": 33,
+    "question": "Why must climate models be validated and bias-corrected using local station data (such as Pakistan Meteorological Department records)?",
+    "options": ["To adjust model outputs against local observations and improve accuracy", "To delete historical weather archives", "To increase grid cell size from 50 km to 1 km", "To bypass IPCC reporting requirements"],
+    "answer": 0,
+    "explanation": "Bias correction aligns raw model outputs with ground-truth meteorological station measurements."
+  },
+  {
+    "id": 34,
+    "question": "What is the primary strength of Global Circulation Models (GCMs)?",
+    "options": ["Excellent for capturing global trends such as overall warming, monsoons, and El Niño", "Perfect for local street-level flood evacuation", "Real-time micro-catchment flash flood forecasting in hours", "Direct measurement of urban tailpipe emissions"],
+    "answer": 0,
+    "explanation": "GCMs excel at simulating global physical trends like greenhouse warming and ocean oscillations."
+  },
+  {
+    "id": 35,
+    "question": "What is a known limitation of climate models regarding rainfall?",
+    "options": ["Rainfall extremes are hard to capture accurately", "They overestimate daily sunshine hours perfectly", "They operate entirely without physical laws", "They only function in tropical rainforests"],
+    "answer": 0,
+    "explanation": "A key limitation of climate models is difficulty in capturing localized rainfall extremes accurately."
+  },
+  {
+    "id": 36,
+    "question": "What is the fundamental difference in scale and time horizon between SWAT and HEC-HMS?",
+    "options": ["SWAT is for large river basins over years/decades; HEC-HMS is for catchments/watersheds over hours/days for flood forecasting.", "SWAT is for hourly smog; HEC-HMS is for 100-year climate change.", "Both are identical models with different names.", "HEC-HMS is used exclusively for global ocean currents."],
+    "answer": 0,
+    "explanation": "SWAT evaluates long-term basin hydrology over decades; HEC-HMS models short-term watershed flood events."
+  },
+  {
+    "id": 37,
+    "question": "A water resource manager is studying long-term agricultural water allocation, soil erosion, and nutrient runoff across the Indus River Basin. Which model is built for this purpose?",
+    "options": ["Soil and Water Assessment Tool (SWAT)", "HEC-HMS", "WRF-Chem", "CMAQ"],
+    "answer": 0,
+    "explanation": "SWAT models large river basins over long time horizons to simulate soil, water, and agricultural management."
+  },
+  {
+    "id": 38,
+    "question": "Developed by the U.S. Army Corps of Engineers, what is the primary purpose of HEC-HMS?",
+    "options": ["To simulate rainfall-runoff processes in a watershed for flood forecasting", "To track global biodiversity extinction rates", "To regulate international carbon trading markets", "To monitor stratospheric ozone holes"],
+    "answer": 0,
+    "explanation": "HEC-HMS simulates rainfall-runoff processes in watersheds for operational flood prediction."
+  },
+  {
+    "id": 39,
+    "question": "In HEC-HMS, what does a rainfall-runoff simulation accomplish?",
+    "options": ["Converts rainfall into surface runoff, estimating streamflow, discharge, and peak flood timing", "Predicts corporate agricultural yields in tons", "Calculates urban solid waste generation per capita", "Maps forest canopy closure via lidar"],
+    "answer": 0,
+    "explanation": "Rainfall-runoff simulations convert precipitation data into estimated river discharge, hydrographs, and peak timing."
+  },
+  {
+    "id": 40,
+    "question": "What essential inputs are required to run an HEC-HMS flood simulation model?",
+    "options": ["Rainfall data, watershed characteristics (area, slope, soil), river network, and loss estimates", "Stock market indices and population census data", "Satellite aerosol optical depth and wind vectors", "IUCN Red List threat classifications"],
+    "answer": 0,
+    "explanation": "HEC-HMS requires rainfall inputs, watershed topography/soil parameters, river routing networks, and infiltration losses."
+  },
+  {
+    "id": 41,
+    "question": "During heavy monsoonal storms in the Mangla Catchment, how does HEC-HMS assist water managers?",
+    "options": ["Estimates water inflow to Mangla Dam, predicts peak discharge time, and supports dam release control", "Measures urban air quality index (AQI)", "Inventories global greenhouse gas emissions", "Classifies forest cover types using optical sensors"],
+    "answer": 0,
+    "explanation": "HEC-HMS predicts reservoir inflow hydrographs and peak arrival times to manage controlled dam releases."
+  },
+  {
+    "id": 42,
+    "question": "What are the distinct output products of SWAT versus HEC-HMS?",
+    "options": ["SWAT outputs streamflow, erosion, and water balance; HEC-HMS outputs hydrographs and flood peaks.", "SWAT outputs hourly smog; HEC-HMS outputs soil pH.", "Both output static maps only.", "Neither produces quantitative numerical results."],
+    "answer": 0,
+    "explanation": "SWAT generates water balance, crop yields, and erosion totals; HEC-HMS outputs event hydrographs and flood peaks."
+  },
+  {
+    "id": 43,
+    "question": "What are air quality models like CMAQ and WRF-Chem conceptualized as in environmental informatics?",
+    "options": ["Virtual laboratories to forecast and study air pollution and chemical transport", "Static relational databases for species records", "Hardware sensors installed on weather balloons", "Economic input-output trade tables"],
+    "answer": 0,
+    "explanation": "Air quality models act as virtual computational laboratories to simulate pollutant transport and chemical transformation."
+  },
+  {
+    "id": 44,
+    "question": "Developed by the U.S. EPA, what is the primary application of the Community Multiscale Air Quality (CMAQ) model?",
+    "options": ["Long-term policy support, setting air emission standards, and simulating smog/acid rain from local to global scales", "Short-term flash flood forecasting within 3 hours", "Real-time routing of rescue boats during floods", "Tracking snow leopard migration corridors"],
+    "answer": 0,
+    "explanation": "CMAQ evaluates regulatory policies, emission controls, and multi-scale air quality standards."
+  },
+  {
+    "id": 45,
+    "question": "During severe winter smog episodes in Lahore and Delhi driven by crop burning, traffic, and low winds, why is WRF-Chem preferred over CMAQ?",
+    "options": ["It combines weather forecasting with atmospheric chemistry for robust short-term forecasts (days to weeks).", "It operates on millennial time scales.", "It ignores weather variables entirely.", "It runs exclusively on spreadsheet software."],
+    "answer": 0,
+    "explanation": "WRF-Chem directly couples meteorological weather dynamics with real-time chemical aerosol transport."
+  },
+  {
+    "id": 46,
+    "question": "What is a Decision-Support System (DSS) in the context of environmental informatics?",
+    "options": ["An ICT platform combining data, models, and visualization to turn raw info into actionable management/policy knowledge", "A manual filing cabinet in government offices", "A standalone satellite orbiting the Earth", "A theoretical physics textbook"],
+    "answer": 0,
+    "explanation": "A DSS integrates data feeds, simulation models, and visual dashboards to assist policy decision-makers."
+  },
+  {
+    "id": 47,
+    "question": "Which of the following is a classic example of an operational DSS used in Pakistan?",
+    "options": ["Indus Basin Flood DSS", "ArcGIS Enterprise Server", "SoilGrids 250m raster", "OpenAQ global API"],
+    "answer": 0,
+    "explanation": "The Indus Basin Flood DSS is an operational decision-support tool combining rainfall, flow data, and flood forecasts."
+  },
+  {
+    "id": 48,
+    "question": "What is the standard 4-step workflow of how a Decision-Support System functions?",
+    "options": ["Data Collection -> Data Integration & Modeling -> Visualization -> Decision Layer", "Print -> Scan -> Email -> Archive", "Compile -> Link -> Crash -> Restart", "Purchase -> Install -> Update -> Uninstall"],
+    "answer": 0,
+    "explanation": "DSS workflows progress from Data Collection to Integration/Modeling, Visualization, and the executive Decision Layer."
+  },
+  {
+    "id": 49,
+    "question": "Which match correctly pairs environmental database platforms with their primary domain?",
+    "options": ["NOAA/Copernicus (Climate), GBIF/IUCN (Biodiversity), WHO/OpenAQ (Pollution), SoilGrids (Soil)", "NOAA (Biodiversity), GBIF (Climate)", "WHO (Hydrology), SoilGrids (Air Quality)", "All platforms store generic text only"],
+    "answer": 0,
+    "explanation": "NOAA/Copernicus serve climate; GBIF/IUCN manage biodiversity; WHO/OpenAQ track air pollution; SoilGrids maps soil properties."
+  },
+  {
+    "id": 50,
+    "question": "When environmental agencies face siloed data sharing, lack of standardization, and missing metadata, what core international data principles are adopted as a solution?",
+    "options": ["FAIR principles (Findable, Accessible, Interoperable, Reusable)", "Closed-source proprietary licensing agreements", "Analog paper archiving rules", "Classified military security protocols"],
+    "answer": 0,
+    "explanation": "FAIR principles establish standards to make environmental data Findable, Accessible, Interoperable, and Reusable."
   }
 ]
